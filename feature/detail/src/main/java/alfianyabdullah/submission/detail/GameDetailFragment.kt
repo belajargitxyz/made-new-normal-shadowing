@@ -1,14 +1,13 @@
 package alfianyabdullah.submission.detail
 
-import alfianyabdullah.submission.base.KoinFragment
+import alfianyabdullah.submission.base.KoinGameFragment
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.koin.core.module.Module
 
-class GameDetailFragment : KoinFragment() {
+class GameDetailFragment : KoinGameFragment() {
     override fun modules() = listOf<Module>()
 
     override fun onCreateView(

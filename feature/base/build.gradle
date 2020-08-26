@@ -38,6 +38,9 @@ dependencies {
     api androidX.core
     api androidX.constraintLayout
     api androidX.appCompat
+    api 'androidx.recyclerview:recyclerview:1.1.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     api koin.core
     api koin.android
