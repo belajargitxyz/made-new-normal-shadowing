@@ -1,0 +1,56 @@
+ext {
+    version = [
+            kotlinStdLib            : "1.4.0",
+            kotlinCoroutine         : "1.3.9",
+            testJunit               : "4.12",
+            extJunit                : "1.1.1",
+            coreEspresso            : "3.2.0",
+            retrofit                : "2.9.0",
+            retrofitGsonConverter   : "2.9.0",
+            interceptor             : "4.8.0",
+            extLiveData             : "2.2.0",
+            room                    : "2.2.5",
+            coreKtx                 : "1.3.1",
+            constraintLayout        : "2.0.0",
+            appCompat               : "1.2.0"
+
+    ]
+
+    androidX = [
+            core                    : "androidx.core:core-ktx:" + version.coreKtx,
+            constraintLayout        : "com.android.support.constraint:constraint-layout:" + version.constraintLayout,
+            appCompat               : "androidx.appcompat:appcompat:" + version.appCompat
+    ]
+
+    lifecycle = [
+            liveDataKtx             : "androidx.lifecycle:lifecycle-livedata-ktx:" + version.extLiveData
+    ]
+
+    retrofit = [
+            retrofit                : "com.squareup.retrofit2:retrofit:" +  version.retrofit,
+            gsonConverter           : "com.squareup.retrofit2:converter-gson:" + version.retrofitGsonConverter,
+            interceptor             : "com.squareup.okhttp3:logging-interceptor:" + version.interceptor
+
+    ]
+
+    room = [
+            runtime                 : "androidx.room:room-runtime:" + version.room,
+            ktx                     : "androidx.room:room-ktx:" + version.room,
+            compiler                : "androidx.room:room-compiler:" + version.room
+    ]
+
+    junit = [
+            junit4                  : "junit:junit:" + version.testJunit
+    ]
+
+    androidTest = [
+            extJunit                : "androidx.test.ext:junit:" + version.extJunit,
+            espresso                : "androidx.test.espresso:espresso-core:" + version.coreEspresso
+    ]
+
+    kotlin = [
+            stdLib                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:" + version.kotlinStdLib,
+            coroutineCore           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:" + version.kotlinCoroutine,
+            coroutineAndroid        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:" + version.kotlinCoroutine
+    ]
+}
