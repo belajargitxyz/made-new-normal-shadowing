@@ -28,17 +28,5 @@ dependencies {
     implementation project(":core")
     implementation project(":feature:detail")
 
-    implementation kotlin.stdLib
-
-    implementation androidX.core
-    implementation androidX.constraintLayout
-    implementation androidX.appCompat
-
-    implementation koin.core
-    implementation koin.android
-    implementation koin.viewModel
-
-    api lifecycle.viewModelKtx
-
     testImplementation junit.junit4
 }

@@ -28,21 +28,31 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation kotlin.stdLib
 
     implementation retrofit.retrofit
     implementation retrofit.gsonConverter
     implementation retrofit.interceptor
 
-    implementation koin.core
-    implementation koin.android
-
     implementation room.runtime
     implementation room.ktx
+
+    api kotlin.stdLib
+
+    api androidX.core
+    api androidX.constraintLayout
+    api androidX.appCompat
+
+    api koin.core
+    api koin.android
+    api koin.viewModel
+
     kapt room.compiler
 
-    implementation kotlin.coroutineCore
-    implementation kotlin.coroutineAndroid
+    api lifecycle.liveDataKtx
+    api lifecycle.viewModelKtx
+
+    api kotlin.coroutineCore
+    api kotlin.coroutineAndroid
 
     testImplementation junit.junit4
 

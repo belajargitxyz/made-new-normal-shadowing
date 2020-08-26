@@ -16,24 +16,17 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":app")
     implementation project(":core")
-
-    implementation kotlin.stdLib
-
-    implementation androidX.core
-    implementation androidX.constraintLayout
-    implementation androidX.appCompat
-
-    implementation koin.core
-    implementation koin.android
-    implementation koin.viewModel
-
-    api lifecycle.viewModelKtx
+    implementation project(":feature:detail")
 
     testImplementation junit.junit4
 }

@@ -36,15 +36,6 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":core")
 
-    implementation kotlin.stdLib
-
-    implementation androidX.core
-    implementation androidX.constraintLayout
-    implementation androidX.appCompat
-
-    implementation koin.core
-    implementation koin.android
-
     testImplementation junit.junit4
 
 }
