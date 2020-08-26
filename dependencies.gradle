@@ -12,8 +12,15 @@ ext {
             room                    : "2.2.5",
             coreKtx                 : "1.3.1",
             constraintLayout        : "2.0.0",
-            appCompat               : "1.2.0"
+            appCompat               : "1.2.0",
+            koin                    : "2.1.5"
 
+    ]
+
+    koin = [
+            core                    : "org.koin:koin-core:" + version.koin,
+            android                 : "org.koin:koin-android:" + version.koin,
+            viewModel                 : "org.koin:koin-android-viewmodel:" + version.koin
     ]
 
     androidX = [
@@ -23,7 +30,8 @@ ext {
     ]
 
     lifecycle = [
-            liveDataKtx             : "androidx.lifecycle:lifecycle-livedata-ktx:" + version.extLiveData
+            liveDataKtx             : "androidx.lifecycle:lifecycle-livedata-ktx:" + version.extLiveData,
+            viewModelKtx             : "androidx.lifecycle:lifecycle-viewmodel-ktx:" + version.extLiveData
     ]
 
     retrofit = [

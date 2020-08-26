@@ -19,7 +19,6 @@ class GamesRepository(
 ) : IGamesRepository {
     override suspend fun getAllGame(): Flow<Resource<List<Game>>> {
         return flow {
-            emit(Resource.Loading())
             when (val result = networkDataSource.getAllGame().first()) {
                 is GamesDataResponse.Success -> {
                     emit(Resource.Success(mapper.mappingListEntityToDomain(result.data)))
@@ -38,7 +37,6 @@ class GamesRepository(
 
     override suspend fun findGameById(id: Int): Flow<Resource<GameDetail>> {
         return flow {
-            emit(Resource.Loading())
             when (val result = networkDataSource.findGameById(id).first()) {
                 is GamesDataResponse.Success -> {
                     emit(Resource.Success(mapper.mappingDetailEntityToDomain(result.data)))

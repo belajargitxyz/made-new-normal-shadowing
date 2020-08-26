@@ -34,14 +34,15 @@ dependencies {
     implementation retrofit.gsonConverter
     implementation retrofit.interceptor
 
+    implementation koin.core
+    implementation koin.android
+
     implementation room.runtime
     implementation room.ktx
     kapt room.compiler
 
     implementation kotlin.coroutineCore
     implementation kotlin.coroutineAndroid
-
-    api lifecycle.liveDataKtx
 
     testImplementation junit.junit4
 

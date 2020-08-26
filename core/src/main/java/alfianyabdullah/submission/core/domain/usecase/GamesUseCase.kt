@@ -1,10 +1,8 @@
 package alfianyabdullah.submission.core.domain.usecase
 
 import alfianyabdullah.submission.core.data.Resource
-import alfianyabdullah.submission.core.data.local.entity.GamesEntity
 import alfianyabdullah.submission.core.domain.model.Game
 import alfianyabdullah.submission.core.domain.model.GameDetail
-import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
 
 interface GamesUseCase {
