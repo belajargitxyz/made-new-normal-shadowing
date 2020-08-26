@@ -1,6 +1,7 @@
 include ':feature'
-include 'feature:detail'
-include 'feature:games'
+include ':feature:favorite'
+include ':feature:detail'
+include ':feature:games'
 include ':core'
 include ':app'
 rootProject.name = "MADE New Normal"
