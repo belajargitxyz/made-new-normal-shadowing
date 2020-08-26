@@ -25,7 +25,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":app")
-    implementation project(":core")
+    implementation project(":feature:base")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     testImplementation junit.junit4
 }

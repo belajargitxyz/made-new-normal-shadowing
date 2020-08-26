@@ -36,6 +36,14 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":core")
 
+    implementation androidX.appCompat
+    implementation androidX.constraintLayout
+
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+
+    api navigation.dynamicFeaturesFragment
+    api 'androidx.navigation:navigation-ui-ktx:2.3.0'
+
     testImplementation junit.junit4
 
 }

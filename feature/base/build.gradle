@@ -1,8 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: "kotlin-kapt"
-apply from: '../dependencies.gradle'
+apply from: '../../dependencies.gradle'
 
 android {
     compileSdkVersion 30
@@ -24,32 +23,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+    api project(":core")
 
-    implementation retrofit.retrofit
-    implementation retrofit.gsonConverter
-    implementation retrofit.interceptor
+    api kotlin.stdLib
 
-    implementation room.runtime
-    implementation room.ktx
-
-    implementation kotlin.stdLib
+    api androidX.core
+    api androidX.constraintLayout
+    api androidX.appCompat
 
     api koin.core
     api koin.android
     api koin.viewModel
 
-    kapt room.compiler
-
     api lifecycle.liveDataKtx
     api lifecycle.viewModelKtx
 
-    implementation kotlin.coroutineCore
-    implementation kotlin.coroutineAndroid
-
-    testImplementation junit.junit4
-
+    api kotlin.coroutineCore
+    api kotlin.coroutineAndroid
 }
