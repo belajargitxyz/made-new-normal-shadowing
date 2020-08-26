@@ -29,7 +29,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    dynamicFeatures = [':games', ':detail']
+    dynamicFeatures = [':feature:games', ':feature:detail']
 }
 
 dependencies {

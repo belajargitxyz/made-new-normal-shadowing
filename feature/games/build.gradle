@@ -1,7 +1,7 @@
 apply plugin: "com.android.dynamic-feature"
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: '../dependencies.gradle'
+apply from: '../../dependencies.gradle'
 
 android {
     compileSdkVersion 30
@@ -26,6 +26,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":app")
     implementation project(":core")
+    implementation project(":feature:detail")
 
     implementation kotlin.stdLib
 
@@ -38,8 +39,6 @@ dependencies {
     implementation koin.viewModel
 
     api lifecycle.viewModelKtx
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 
     testImplementation junit.junit4
 }
