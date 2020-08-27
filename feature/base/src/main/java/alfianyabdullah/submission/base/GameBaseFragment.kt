@@ -1,5 +1,6 @@
 package alfianyabdullah.submission.base
 
+import alfianyabdullah.submission.core.domain.model.Game
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +11,14 @@ import org.koin.core.module.Module
 
 abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
 
-    abstract fun modules(): List<Module>
+    lateinit var gameBundle: Game
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadKoinModules(modules())
+
+        arguments?.let {
+            gameBundle = it.getParcelable<Game>("GAME") as Game
+        }
     }
 
     override fun onCreateView(

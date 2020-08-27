@@ -1,6 +1,5 @@
-package alfianyabdullah.submission.games
+package alfianyabdullah.submission.detail
 
-import alfianyabdullah.submission.base.GamesAdapter
 import alfianyabdullah.submission.core.domain.usecase.NetworkTaskInteractor
 import alfianyabdullah.submission.core.domain.usecase.NetworkTaskUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -9,9 +8,8 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 @ExperimentalCoroutinesApi
-val gamesModule = module {
-    single<NetworkTaskUseCase>(named("games")) { NetworkTaskInteractor(get()) }
-    single { GamesAdapter(mutableListOf()) }
+val gamesDetailModule = module {
+    single<NetworkTaskUseCase>(named("gamesdetail")) { NetworkTaskInteractor(get()) }
 
-    viewModel { GamesViewModel(get(named("games"))) }
+    viewModel { GameDetailViewModel(get(named("gamesdetail"))) }
 }

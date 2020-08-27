@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flowOn
 class GamesNetworkDataSource(private val gamesDataService: GamesDataService) {
 
     suspend fun getAllGame(): Flow<GamesDataResponse<List<GameItem>>> = flow {
-        val response = gamesDataService.getAllGame()
+        val response = gamesDataService.getAllGame((1..100).random())
 
         if (response.isSuccessful) {
             val result = response.body()?.results

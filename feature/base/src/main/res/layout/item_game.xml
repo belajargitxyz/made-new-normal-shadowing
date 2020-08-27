@@ -42,15 +42,14 @@
             app:layout_constraintStart_toStartOf="@id/itemPoster" />
 
         <TextView
-            android:id="@+id/itemRating"
+            android:id="@+id/itemDetailRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:shadowColor="#000"
+            android:shadowColor="#81000000"
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="10"
-            android:text="2.7"
             android:textColor="#fff"
             android:textStyle="bold"
             android:paddingEnd="4dp"
@@ -60,20 +59,21 @@
             app:layout_constraintTop_toTopOf="@id/icRating" />
 
         <TextView
-            android:id="@+id/itemName"
-            android:layout_width="wrap_content"
+            android:id="@+id/itemDetailName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:shadowColor="#000"
+            android:shadowColor="#81000000"
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="10"
-            android:text="GTA V"
             android:textColor="#fff"
             android:textSize="20sp"
             android:textStyle="bold"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/icRating"
             app:layout_constraintStart_toStartOf="@id/icRating" />
 

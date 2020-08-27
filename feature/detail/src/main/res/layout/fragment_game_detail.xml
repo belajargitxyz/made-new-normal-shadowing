@@ -1,13 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/gamesAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="10dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="parallax">
+
+                <ImageView
+                    android:id="@+id/itemDetailPoster"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <ImageView
+                    android:id="@+id/icRating"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:outlineProvider="bounds"
+                    android:shadowColor="#000"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="10"
+                    android:src="@drawable/ic_baseline_star_24"
+                    app:layout_constraintBottom_toBottomOf="@id/itemDetailPoster"
+                    app:layout_constraintStart_toStartOf="@id/itemDetailPoster" />
+
+                <TextView
+                    android:id="@+id/itemDetailRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:shadowColor="#81000000"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="10"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/icRating"
+                    app:layout_constraintStart_toEndOf="@id/icRating"
+                    app:layout_constraintTop_toTopOf="@id/icRating" />
+
+                <TextView
+                    android:id="@+id/itemDetailName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:shadowColor="#81000000"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="10"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/icRating"
+                    app:layout_constraintStart_toStartOf="@id/icRating" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/rvGames"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="ini detail"
-        android:textSize="30sp"/>
+        android:clipToPadding="false"
+        android:paddingStart="24dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="24dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/detailView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publishers"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipPublisher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"/>
+
+            <TextView
+                android:id="@+id/itemDetailDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
