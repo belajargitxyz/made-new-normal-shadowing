@@ -2,7 +2,7 @@ package alfianyabdullah.submission.games
 
 import alfianyabdullah.submission.base.GamesAdapter
 import alfianyabdullah.submission.base.GamesAdapterDecoration
-import alfianyabdullah.submission.base.KoinGameFragment
+import alfianyabdullah.submission.base.GameBaseFragment
 import alfianyabdullah.submission.core.data.Resource
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,19 +16,12 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 @ExperimentalCoroutinesApi
-class GamesFragment : KoinGameFragment() {
+class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
 
     private val gamesViewModel: GamesViewModel by viewModel()
     private val gamesAdapter: GamesAdapter by inject()
 
     override fun modules() = listOf(gamesModule)
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_games, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

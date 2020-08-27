@@ -2,12 +2,8 @@ package alfianyabdullah.submission.games
 
 import alfianyabdullah.submission.core.data.Resource
 import alfianyabdullah.submission.core.domain.model.Game
-import alfianyabdullah.submission.core.domain.usecase.GamesUseCase
 import androidx.lifecycle.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
