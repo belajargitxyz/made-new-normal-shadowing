@@ -2,26 +2,27 @@ package alfianyabdullah.submission.games
 
 import alfianyabdullah.submission.core.data.Resource
 import alfianyabdullah.submission.core.domain.model.Game
+import alfianyabdullah.submission.core.domain.usecase.NetworkTaskUseCase
 import androidx.lifecycle.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
-class GamesViewModel(private val useCase: GamesUseCase) : ViewModel() {
+class GamesViewModel(private val useCase: NetworkTaskUseCase) : ViewModel() {
 
     private val _games = MutableLiveData<Resource<List<Game>>>()
+    val games: LiveData<Resource<List<Game>>> = _games
+
     private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     init {
         _isLoading.postValue(false)
         findAllGames()
     }
-
-    val games: LiveData<Resource<List<Game>>>
-        get() = _games
-
-    val isLoading: LiveData<Boolean>
-        get() = _isLoading
 
     private fun findAllGames() {
         viewModelScope.launch {
@@ -31,6 +32,7 @@ class GamesViewModel(private val useCase: GamesUseCase) : ViewModel() {
                 .collect {
                     _games.postValue(it)
                 }
+
         }
     }
 }

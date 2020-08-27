@@ -4,7 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class GamesAdapterDecoration(private val size: Int): RecyclerView.ItemDecoration() {
+class GamesAdapterDecoration(private val size: Int) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -17,7 +17,15 @@ class GamesAdapterDecoration(private val size: Int): RecyclerView.ItemDecoration
             if (parent.getChildAdapterPosition(view) == 0) {
                 top = size
             }
-            bottom = size
+
+            bottom = if ((parent.adapter as GamesAdapter).data().lastIndex ==
+                parent.getChildAdapterPosition(view)
+            ) {
+                size * 5
+            } else {
+
+                size
+            }
         }
     }
 }

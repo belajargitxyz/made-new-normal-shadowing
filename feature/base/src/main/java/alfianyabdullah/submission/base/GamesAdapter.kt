@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.MultiTransformation
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.FitCenter
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import kotlinx.android.synthetic.main.item_game.view.*
 
 class GamesAdapter(private val games: MutableList<Game>) :
@@ -21,6 +18,8 @@ class GamesAdapter(private val games: MutableList<Game>) :
 
         notifyDataSetChanged()
     }
+
+    fun data() = games
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_game, parent, false)
@@ -41,7 +40,9 @@ class GamesAdapter(private val games: MutableList<Game>) :
 
             Glide.with(itemView)
                 .load(game.poster)
-                .transform(MultiTransformation(CenterCrop(), RoundedCorners(30)))
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .placeholder(R.drawable.ic_vr_gaming_item)
+                .centerCrop()
                 .into(itemView.itemPoster)
         }
     }
