@@ -1,11 +1,11 @@
 package alfianyabdullah.submission.core.utils
 
 import alfianyabdullah.submission.core.data.local.entity.GamesEntity
+import alfianyabdullah.submission.core.data.local.entity.GenreEntity
+import alfianyabdullah.submission.core.data.local.entity.ScreenshotEntity
 import alfianyabdullah.submission.core.data.network.response.GameDetailResponse
 import alfianyabdullah.submission.core.data.network.response.GameItem
-import alfianyabdullah.submission.core.domain.model.Game
-import alfianyabdullah.submission.core.domain.model.GameDetail
-import alfianyabdullah.submission.core.domain.model.GamePublisher
+import alfianyabdullah.submission.core.domain.model.*
 import java.lang.IllegalArgumentException
 
 class Mapper {
@@ -18,7 +18,13 @@ class Mapper {
                     id = entity.id,
                     poster = entity.poster,
                     name = entity.name,
-                    rating = entity.rating
+                    rating = entity.rating,
+                    genres = entity.genres.map { genre ->
+                        GameGenre(genre.name)
+                    },
+                    screenshots = entity.screenshots.map { screenshot ->
+                        GameScreenshot(screenshot.image)
+                    }
                 )
             } catch (e: Exception) {
                 val item = it as GameItem
@@ -26,7 +32,13 @@ class Mapper {
                     id = item.id,
                     poster = item.poster,
                     name = item.name,
-                    rating = item.rating
+                    rating = item.rating,
+                    genres = item.genres.map { genre ->
+                        GameGenre(genre.name)
+                    },
+                    screenshots = item.screenshots.map { screenshot ->
+                        GameScreenshot(screenshot.image)
+                    }
                 )
             }
         } else throw IllegalArgumentException("Undefined type")
@@ -45,6 +57,12 @@ class Mapper {
         id = game.id,
         poster = game.poster,
         name = game.name,
-        rating = game.rating
+        rating = game.rating,
+        genres = game.genres.map { genre ->
+            GenreEntity(genre.name)
+        },
+        screenshots = game.screenshots.map { screenshot ->
+            ScreenshotEntity(screenshot.image)
+        }
     )
 }

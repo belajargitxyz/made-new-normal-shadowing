@@ -12,8 +12,7 @@
             android:id="@+id/action_games_fragment_to_detail_fragment"
             app:destination="@id/detail_fragment"
             app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in" />
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 
     <fragment

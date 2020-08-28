@@ -10,6 +10,7 @@ import org.koin.dsl.module
 @ExperimentalCoroutinesApi
 val gamesDetailModule = module {
     single<NetworkTaskUseCase>(named("gamesdetail")) { NetworkTaskInteractor(get()) }
+    single { GameScreenshotAdapter(mutableListOf()) }
 
     viewModel { GameDetailViewModel(get(named("gamesdetail"))) }
 }

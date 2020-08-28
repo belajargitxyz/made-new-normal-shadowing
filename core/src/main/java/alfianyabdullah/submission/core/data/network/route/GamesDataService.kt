@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface GamesDataService {
 
     @GET("api/games")
-    suspend fun getAllGame(@Query("page") page: Int): Response<GameResponse?>
+    suspend fun getAllGame(): Response<GameResponse?>
 
     @GET("api/games/{gameId}")
     suspend fun findGameById(@Path("gameId") gameId: Int): Response<GameDetailResponse?>

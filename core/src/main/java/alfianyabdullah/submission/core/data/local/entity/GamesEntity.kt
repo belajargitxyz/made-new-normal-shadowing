@@ -19,5 +19,11 @@ data class GamesEntity(
     val name: String,
 
     @ColumnInfo(name = "game_rating")
-    val rating: Double
+    val rating: Double,
+
+    @ColumnInfo(name = "game_genre")
+    val genres: List<GenreEntity>,
+
+    @ColumnInfo(name = "game_screenshot")
+    val screenshots: List<ScreenshotEntity>
 )

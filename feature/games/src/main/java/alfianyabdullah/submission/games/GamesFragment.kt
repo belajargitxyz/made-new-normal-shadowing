@@ -14,6 +14,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
+import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 
 import alfianyabdullah.submission.made.R as mainR
@@ -24,10 +25,7 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
     private val gamesViewModel: GamesViewModel by viewModel()
     private val gamesAdapter: GamesAdapter by inject()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        loadKoinModules(gamesModule)
-    }
+    override fun modules() = listOf(gamesModule)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,7 +41,7 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
 
         rvGames.hasFixedSize()
         rvGames.layoutManager = LinearLayoutManager(requireContext())
-        rvGames.addItemDecoration(GamesAdapterDecoration(40))
+        rvGames.addItemDecoration(GamesAdapterDecoration(20))
         rvGames.adapter = gamesAdapter
 
         gamesViewModel.isLoading.observe(viewLifecycleOwner, Observer {

@@ -8,38 +8,45 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import java.lang.Exception
 
 class GamesNetworkDataSource(private val gamesDataService: GamesDataService) {
 
     suspend fun getAllGame(): Flow<GamesDataResponse<List<GameItem>>> = flow {
-        val response = gamesDataService.getAllGame((1..100).random())
+        try {
+            val response = gamesDataService.getAllGame()
+            if (response.isSuccessful) {
+                val result = response.body()?.results
+                if (result?.isNotEmpty() == true) {
+                    emit(GamesDataResponse.Success(result))
+                } else {
+                    emit(GamesDataResponse.Empty)
+                }
 
-        if (response.isSuccessful) {
-            val result = response.body()?.results
-            if (result?.isNotEmpty() == true) {
-                emit(GamesDataResponse.Success(result))
             } else {
-                emit(GamesDataResponse.Empty)
+                emit(GamesDataResponse.Error("Something happen with data!"))
             }
-
-        } else {
+        } catch (e: Exception) {
             emit(GamesDataResponse.Error("Something happen with network!"))
         }
 
     }.flowOn(Dispatchers.IO)
 
-
     suspend fun findGameById(id: Int): Flow<GamesDataResponse<GameDetailResponse>> = flow {
-        val response = gamesDataService.findGameById(id)
-        if (response.isSuccessful) {
-            val result = response.body()
-            if (result != null) {
-                emit(GamesDataResponse.Success(result))
-            } else {
-                emit(GamesDataResponse.Empty)
-            }
+        try {
+            val response = gamesDataService.findGameById(id)
+            if (response.isSuccessful) {
+                val result = response.body()
+                if (result != null) {
+                    emit(GamesDataResponse.Success(result))
+                } else {
+                    emit(GamesDataResponse.Empty)
+                }
 
-        } else {
+            } else {
+                emit(GamesDataResponse.Error("Something happen with data!"))
+            }
+        } catch (e: Exception) {
             emit(GamesDataResponse.Error("Something happen with network!"))
         }
 

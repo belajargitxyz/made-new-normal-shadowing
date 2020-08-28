@@ -8,5 +8,7 @@ data class Game(
     val id: Int,
     val poster: String,
     val name: String,
-    val rating: Double
-): Parcelable
+    val rating: Double,
+    val genres: List<GameGenre>,
+    val screenshots: List<GameScreenshot>
+) : Parcelable

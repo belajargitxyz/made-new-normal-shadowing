@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
@@ -24,62 +23,24 @@
                 android:layout_height="wrap_content"
                 app:layout_collapseMode="parallax">
 
-                <ImageView
-                    android:id="@+id/itemDetailPoster"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/itemDetailScreenshot"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="320dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/backgrounds/scenic" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/icRating"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="24dp"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/itemDetailScreenshotIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
-                    android:outlineProvider="bounds"
-                    android:shadowColor="#000"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="10"
-                    android:src="@drawable/ic_baseline_star_24"
-                    app:layout_constraintBottom_toBottomOf="@id/itemDetailPoster"
-                    app:layout_constraintStart_toStartOf="@id/itemDetailPoster" />
-
-                <TextView
-                    android:id="@+id/itemDetailRating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:paddingStart="4dp"
-                    android:paddingEnd="4dp"
-                    android:shadowColor="#81000000"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="10"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@id/icRating"
-                    app:layout_constraintStart_toEndOf="@id/icRating"
-                    app:layout_constraintTop_toTopOf="@id/icRating" />
-
-                <TextView
-                    android:id="@+id/itemDetailName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:paddingStart="4dp"
-                    android:paddingEnd="4dp"
-                    android:shadowColor="#81000000"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="10"
-                    android:textColor="#fff"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/icRating"
-                    app:layout_constraintStart_toStartOf="@id/icRating" />
+                    android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -97,37 +58,99 @@
         android:paddingEnd="24dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/detailView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/itemDetailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:textColor="#1E1E1E"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/icRating"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_baseline_star_24"
+                app:layout_constraintStart_toStartOf="@id/itemDetailName"
+                app:layout_constraintTop_toBottomOf="@id/itemDetailName" />
+
+            <TextView
+                android:id="@+id/itemDetailRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:textColor="#3E3E3E"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/icRating"
+                app:layout_constraintStart_toEndOf="@id/icRating"
+                app:layout_constraintTop_toTopOf="@id/icRating" />
+
+            <TextView
+                android:id="@+id/tvTextPublisher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Publishers"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="@id/icRating"
+                app:layout_constraintTop_toBottomOf="@id/icRating" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipPublisher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"/>
+                app:layout_constraintStart_toStartOf="@id/tvTextPublisher"
+                app:layout_constraintTop_toBottomOf="@id/tvTextPublisher"/>
 
             <TextView
+                android:id="@+id/tvTextGenres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Genres"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="@id/chipPublisher"
+                app:layout_constraintTop_toBottomOf="@id/chipPublisher" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tvTextGenres"
+                app:layout_constraintTop_toBottomOf="@id/tvTextGenres"/>
+
+            <TextView
+                android:id="@+id/tvTextDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:text="Description"
                 android:textStyle="bold"
-                android:layout_marginTop="24dp"/>
+                app:layout_constraintStart_toStartOf="@id/chipGenres"
+                app:layout_constraintTop_toBottomOf="@id/chipGenres"/>
 
             <TextView
                 android:id="@+id/itemDetailDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
-        </LinearLayout>
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@id/tvTextDescription"
+                app:layout_constraintTop_toBottomOf="@id/tvTextDescription"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 

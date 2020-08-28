@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "alfianyabdullah.submission.made"
-        minSdkVersion 28
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -39,8 +39,8 @@ dependencies {
     api androidX.appCompat
     api androidX.constraintLayout
 
-    api 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
-    api 'com.google.android.material:material:1.2.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation 'com.google.android.material:material:1.2.0'
 
     api navigation.dynamicFeaturesFragment
     api 'androidx.navigation:navigation-ui-ktx:2.3.0'
