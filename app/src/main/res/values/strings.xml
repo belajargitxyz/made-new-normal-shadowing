@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">MADE New Normal</string>
-    <string name="title_games">Games</string>
     <string name="title_detail">Detail Games</string>
-    <string name="title_favorite">Favorite</string>
 </resources>

@@ -18,6 +18,9 @@ class GameFavoritesFragment : GameBaseFragment(R.layout.fragment_favorites) {
     private val gameAdapter: GamesAdapter by inject(named(GAME_FAVORITE_QUALIFIER))
 
     override fun modules() = listOf(gameFavoritesModule)
+    override fun views(): Map<String, List<View>> {
+        return mapOf()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

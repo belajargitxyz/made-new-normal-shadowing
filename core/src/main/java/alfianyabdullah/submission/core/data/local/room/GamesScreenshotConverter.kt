@@ -1,6 +1,5 @@
 package alfianyabdullah.submission.core.data.local.room
 
-import alfianyabdullah.submission.core.data.local.entity.GenreEntity
 import alfianyabdullah.submission.core.data.local.entity.ScreenshotEntity
 import androidx.room.TypeConverter
 import com.google.gson.Gson

@@ -1,4 +1,10 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_oops">Oops!</string>
+    <string name="btn_text_reload">Reload</string>
+    <string name="text_page_info">page info</string>
+    <string name="text_icon_rating">icon rating</string>
+    <string name="text_publishers">Publishers</string>
+    <string name="text_genres">Genres</string>
+    <string name="text_description">Description</string>
 </resources>

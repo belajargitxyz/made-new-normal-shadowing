@@ -2,8 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/gamesAppBar"
@@ -24,12 +23,11 @@
                 app:layout_collapseMode="parallax">
 
                 <TextView
-                    android:id="@+id/big_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="70dp"
                     android:layout_marginBottom="16dp"
-                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="Favorite Game"
                     android:textColor="#575757"
@@ -47,6 +45,7 @@
         android:id="@+id/rvFavoriteGames"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#fff"
         android:clipToPadding="false"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"

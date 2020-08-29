@@ -35,7 +35,7 @@ abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
 
     fun updateViewsVisibility(visibility: Int, keyView: String) {
         views()[keyView]?.forEach {
-            TransitionManager.beginDelayedTransition(it.parent as ViewGroup)
+            //TransitionManager.beginDelayedTransition(it.parent as ViewGroup)
             it.visibility = visibility
         }
     }

@@ -3,13 +3,14 @@ package alfianyabdullah.submission.detail
 import alfianyabdullah.submission.core.data.Resource
 import alfianyabdullah.submission.core.domain.model.Game
 import alfianyabdullah.submission.core.domain.model.GameDetail
-import alfianyabdullah.submission.core.domain.usecase.LocalTaskInteractor
 import alfianyabdullah.submission.core.domain.usecase.LocalTaskUseCase
 import alfianyabdullah.submission.core.domain.usecase.NetworkTaskUseCase
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch

@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
+import kotlinx.android.synthetic.main.content_game_detail.*
 import kotlinx.android.synthetic.main.fragment_game_detail.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
@@ -21,9 +23,27 @@ class GameDetailFragment : GameBaseFragment(R.layout.fragment_game_detail) {
     private var isFavorite = false
 
     override fun modules() = listOf(gamesDetailModule)
+    override fun views() = mapOf(
+        KEY_INFO to listOf(
+            tvInfo, ivInfo, tvOtherInfo, btnReloadGames
+        ),
+        KEY_CONTENT to listOf(
+            itemDetailName,
+            icRating,
+            itemDetailRating,
+            tvTextPublisher,
+            chipPublisher,
+            tvTextGenres,
+            chipGenres,
+            tvTextDescription,
+            itemDetailDescription
+        )
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        updateViewsVisibility(View.INVISIBLE, KEY_INFO)
 
         fabFavorite.hide()
 
@@ -42,41 +62,55 @@ class GameDetailFragment : GameBaseFragment(R.layout.fragment_game_detail) {
             gameDetailViewModel.updateGamesFavorite(isFavorite, gameBundle)
         }
 
+        btnReloadGames.setOnClickListener {
+            gameDetailViewModel.findGameById(gameBundle.id)
+        }
+
         gameDetailViewModel.loadFavoriteStatus(gameBundle)
         gameDetailViewModel.findGameById(gameBundle.id)
 
         observe(gameDetailViewModel.game) {
+            fun ChipGroup.addChild(text: String) {
+                val child = Chip(this.context)
+                child.text = text
+
+                this.addView(child)
+            }
+
             when (it) {
                 is Resource.Success -> {
                     it.data?.let { game ->
                         itemDetailDescription.text = game.desc
 
+                        chipPublisher.removeAllViews()
                         game.publishers.forEach { pub ->
-                            val publisher = Chip(requireContext())
-                            publisher.text = pub.name
-
-                            chipPublisher.addView(publisher)
+                            chipPublisher.addChild(pub.name)
                         }
 
+                        chipGenres.removeAllViews()
                         gameBundle.genres.forEach { genre ->
-                            val genreChip = Chip(requireContext())
-                            genreChip.text = genre.name
-
-                            chipGenres.addView(genreChip)
+                            chipGenres.addChild(genre.name)
                         }
 
                         fabFavorite.show()
+
+                        updateViewsVisibility(View.INVISIBLE, KEY_INFO)
+                        updateViewsVisibility(View.VISIBLE, KEY_CONTENT)
                     }
                 }
                 is Resource.Error -> {
-
+                    updateViewsVisibility(View.VISIBLE, KEY_INFO)
+                    tvInfo.text = it.message
                 }
             }
         }
 
         observe(gameDetailViewModel.isLoading) {
             loading.visibility = if (it) View.VISIBLE else View.INVISIBLE
-            detailView.visibility = if (it) View.INVISIBLE else View.VISIBLE
+            if (it) {
+                updateViewsVisibility(View.INVISIBLE, KEY_INFO)
+                updateViewsVisibility(View.INVISIBLE, KEY_CONTENT)
+            }
         }
 
         observe(gameDetailViewModel.favorite) {
@@ -87,5 +121,10 @@ class GameDetailFragment : GameBaseFragment(R.layout.fragment_game_detail) {
                 fabFavorite.setImageResource(R.drawable.ic_unfavorite)
             }
         }
+    }
+
+    companion object {
+        private const val KEY_INFO = "info"
+        private const val KEY_CONTENT = "content"
     }
 }
