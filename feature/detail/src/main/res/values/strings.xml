@@ -7,4 +7,5 @@
     <string name="text_publishers">Publishers</string>
     <string name="text_genres">Genres</string>
     <string name="text_description">Description</string>
+    <string name="text_poster">poster</string>
 </resources>

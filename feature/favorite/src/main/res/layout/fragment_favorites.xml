@@ -29,7 +29,7 @@
                     android:layout_marginTop="70dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Favorite Game"
+                    android:text="@string/text_favorite_game"
                     android:textColor="#575757"
                     android:textSize="40sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -50,6 +50,5 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,7 +4,6 @@ import alfianyabdullah.submission.base.*
 import alfianyabdullah.submission.core.data.Resource
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isGone
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.content_games.*

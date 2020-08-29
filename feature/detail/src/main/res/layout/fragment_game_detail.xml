@@ -47,17 +47,28 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_game_detail"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:clipToPadding="false"
+        android:paddingStart="24dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="24dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include layout="@layout/content_game_detail" />
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabFavorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:tint="#fff"
         app:backgroundTint="@color/colorAccent"
         app:layout_anchor="@id/gamesAppBar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/ic_unfavorite" />
+        app:srcCompat="@drawable/ic_unfavorite"
+        app:tint="#fff" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

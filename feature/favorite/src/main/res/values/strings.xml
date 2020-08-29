@@ -1,3 +1,4 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="text_favorite_game" translatable="false">Favorite Game</string>
 </resources>

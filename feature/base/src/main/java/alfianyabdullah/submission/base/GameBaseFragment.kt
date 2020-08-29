@@ -2,7 +2,6 @@ package alfianyabdullah.submission.base
 
 import alfianyabdullah.submission.core.domain.model.Game
 import android.os.Bundle
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

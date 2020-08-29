@@ -1,171 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff"
-    android:clipToPadding="false"
-    android:paddingStart="24dp"
-    android:paddingTop="30dp"
-    android:paddingEnd="24dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/itemDetailName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="#1E1E1E"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:translationX="-3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="GTA V Vice Citu" />
+
+    <ImageView
+        android:id="@+id/icRating"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/text_icon_rating"
+        android:src="@drawable/ic_baseline_star_24"
+        app:layout_constraintStart_toStartOf="@id/itemDetailName"
+        app:layout_constraintTop_toBottomOf="@id/itemDetailName" />
+
+    <TextView
+        android:id="@+id/itemDetailRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="#3E3E3E"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/icRating"
+        app:layout_constraintStart_toEndOf="@id/icRating"
+        app:layout_constraintTop_toTopOf="@id/icRating" />
+
+    <TextView
+        android:id="@+id/tvTextPublisher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/text_publishers"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/icRating"
+        app:layout_constraintTop_toBottomOf="@id/icRating" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipPublisher"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvTextPublisher"
+        app:layout_constraintTop_toBottomOf="@id/tvTextPublisher" />
 
-        <TextView
-            android:id="@+id/itemDetailName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp"
-            android:textColor="#1E1E1E"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:translationX="-3dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="GTA V Vice Citu" />
+    <TextView
+        android:id="@+id/tvTextGenres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/text_genres"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/chipPublisher"
+        app:layout_constraintTop_toBottomOf="@id/chipPublisher" />
 
-        <ImageView
-            android:id="@+id/icRating"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@string/text_icon_rating"
-            android:src="@drawable/ic_baseline_star_24"
-            app:layout_constraintStart_toStartOf="@id/itemDetailName"
-            app:layout_constraintTop_toBottomOf="@id/itemDetailName" />
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGenres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvTextGenres"
+        app:layout_constraintTop_toBottomOf="@id/tvTextGenres" />
 
-        <TextView
-            android:id="@+id/itemDetailRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp"
-            android:textColor="#3E3E3E"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/icRating"
-            app:layout_constraintStart_toEndOf="@id/icRating"
-            app:layout_constraintTop_toTopOf="@id/icRating" />
+    <TextView
+        android:id="@+id/tvTextDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/text_description"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/chipGenres"
+        app:layout_constraintTop_toBottomOf="@id/chipGenres" />
 
-        <TextView
-            android:id="@+id/tvTextPublisher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/text_publishers"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/icRating"
-            app:layout_constraintTop_toBottomOf="@id/icRating" />
+    <TextView
+        android:id="@+id/itemDetailDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/tvTextDescription"
+        app:layout_constraintTop_toBottomOf="@id/tvTextDescription" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipPublisher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/tvTextPublisher"
-            app:layout_constraintTop_toBottomOf="@id/tvTextPublisher" />
+    <ImageView
+        android:id="@+id/ivInfo"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/text_page_info"
+        android:src="@drawable/ic_game_crash"
+        app:layout_constraintEnd_toStartOf="@+id/tvOtherInfo"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvTextGenres"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/text_genres"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/chipPublisher"
-            app:layout_constraintTop_toBottomOf="@id/chipPublisher" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGenres"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/tvTextGenres"
-            app:layout_constraintTop_toBottomOf="@id/tvTextGenres" />
-
-        <TextView
-            android:id="@+id/tvTextDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/text_description"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/chipGenres"
-            app:layout_constraintTop_toBottomOf="@id/chipGenres" />
-
-        <TextView
-            android:id="@+id/itemDetailDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="@id/tvTextDescription"
-            app:layout_constraintTop_toBottomOf="@id/tvTextDescription" />
-
-        <ImageView
-            android:id="@+id/ivInfo"
-            android:layout_width="70dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="50dp"
-            android:contentDescription="@string/text_page_info"
-            android:src="@drawable/ic_game_crash"
-            app:layout_constraintEnd_toStartOf="@+id/tvOtherInfo"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvOtherInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:gravity="center"
-            android:text="@string/text_oops"
-            android:textColor="#333333"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/ivInfo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/ivInfo"
-            app:layout_constraintTop_toTopOf="@id/ivInfo" />
+    <TextView
+        android:id="@+id/tvOtherInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="@string/text_oops"
+        android:textColor="#333333"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivInfo"
+        app:layout_constraintTop_toTopOf="@id/ivInfo" />
 
 
-        <TextView
-            android:id="@+id/tvInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_margin="16dp"
-            android:gravity="center"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivInfo"
-            tools:text="Something happen with network!" />
+    <TextView
+        android:id="@+id/tvInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivInfo"
+        tools:text="Something happen with network!" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnReloadGames"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/btn_text_reload"
-            app:backgroundTint="@color/colorAccent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvInfo" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReloadGames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/btn_text_reload"
+        app:backgroundTint="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInfo" />
 
-        <ProgressBar
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
