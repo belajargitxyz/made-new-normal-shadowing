@@ -31,7 +31,7 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        updateViewsVisibility(View.INVISIBLE, "INFO")
+        updateViewsVisibility(View.INVISIBLE, KEY_INFO)
 
         gamesAdapter.setOnGameItemClickListener {
             val data = Bundle().apply {
