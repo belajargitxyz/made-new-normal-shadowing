@@ -8,14 +8,16 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
+const val GAME_FAVORITE_QUALIFIER_LOCAL = "game_favorite_local"
+
 @ExperimentalCoroutinesApi
 val gameFavoritesModule = module {
-    single<LocalTaskUseCase>(named("gamesfavoritelocal")) { LocalTaskInteractor(get()) }
-    single(named("gamesfavoritelocal")) { GamesAdapter(mutableListOf()) }
+    single<LocalTaskUseCase>(named(GAME_FAVORITE_QUALIFIER_LOCAL)) { LocalTaskInteractor(get()) }
+    single(named(GAME_FAVORITE_QUALIFIER_LOCAL)) { GamesAdapter(mutableListOf()) }
 
     viewModel {
         GameFavoritesViewModel(
-            get(named("gamesfavoritelocal"))
+            get(named(GAME_FAVORITE_QUALIFIER_LOCAL))
         )
     }
 }

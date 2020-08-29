@@ -8,10 +8,12 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
+const val GAME_QUALIFIER_NETWORK = "game_network"
+
 @ExperimentalCoroutinesApi
 val gamesModule = module {
-    single<NetworkTaskUseCase>(named("games")) { NetworkTaskInteractor(get()) }
-    single(named("games")) { GamesAdapter(mutableListOf()) }
+    single<NetworkTaskUseCase>(named(GAME_QUALIFIER_NETWORK)) { NetworkTaskInteractor(get()) }
+    single(named(GAME_QUALIFIER_NETWORK)) { GamesAdapter(mutableListOf()) }
 
-    viewModel { GamesViewModel(get(named("games"))) }
+    viewModel { GamesViewModel(get(named(GAME_QUALIFIER_NETWORK))) }
 }

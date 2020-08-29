@@ -1,9 +1,6 @@
 package alfianyabdullah.submission.games
 
-import alfianyabdullah.submission.base.GameBaseFragment
-import alfianyabdullah.submission.base.GamesAdapter
-import alfianyabdullah.submission.base.GamesAdapterDecoration
-import alfianyabdullah.submission.base.observe
+import alfianyabdullah.submission.base.*
 import alfianyabdullah.submission.core.data.Resource
 import android.os.Bundle
 import android.view.View
@@ -21,7 +18,7 @@ import alfianyabdullah.submission.made.R as mainR
 class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
 
     private val gamesViewModel: GamesViewModel by viewModel()
-    private val gamesAdapter: GamesAdapter by inject(named("games"))
+    private val gamesAdapter: GamesAdapter by inject(named(GAME_QUALIFIER_NETWORK))
 
     override fun modules() = listOf(gamesModule)
 
@@ -30,7 +27,7 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
 
         gamesAdapter.setOnGameItemClickListener {
             val data = Bundle().apply {
-                putParcelable("GAME", it)
+                putParcelable(GAME_BUNDLE_KEY, it)
             }
 
             view.findNavController()
@@ -47,11 +44,11 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
                 .navigate(mainR.id.action_games_fragment_to_favorite_fragment)
         }
 
-        observe(gamesViewModel.isLoading){
+        observe(gamesViewModel.isLoading) {
             loading.visibility = if (it) View.VISIBLE else View.INVISIBLE
         }
 
-        observe(gamesViewModel.games){
+        observe(gamesViewModel.games) {
             when (it) {
                 is Resource.Success -> {
                     it.data?.let { data ->

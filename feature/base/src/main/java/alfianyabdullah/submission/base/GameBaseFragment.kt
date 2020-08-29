@@ -20,7 +20,7 @@ abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
         loadKoinModules(modules())
 
         arguments?.let {
-            gameBundle = it.getParcelable<Game>("GAME") as Game
+            gameBundle = it.getParcelable<Game>(GAME_BUNDLE_KEY) as Game
         }
     }
 

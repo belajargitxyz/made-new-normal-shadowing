@@ -6,12 +6,8 @@ import alfianyabdullah.submission.base.observe
 import alfianyabdullah.submission.core.data.Resource
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.chip.Chip
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_game_detail.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject

@@ -13,6 +13,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
+const val GAME_BUNDLE_KEY = "game_key"
+
 fun <T> Fragment.observe(data: LiveData<T>, action: (T) -> Unit) {
     data.observe(viewLifecycleOwner, Observer {
         action(it)

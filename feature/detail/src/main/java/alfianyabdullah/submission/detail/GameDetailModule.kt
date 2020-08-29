@@ -9,11 +9,14 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
+const val GAME_DETAIL_QUALIFIER_LOCAL = "games_detail_local"
+const val GAME_DETAIL_QUALIFIER_NETWORK = "games_detail_network"
+
 @ExperimentalCoroutinesApi
 val gamesDetailModule = module {
-    single<NetworkTaskUseCase>(named("gamesdetailnetwork")) { NetworkTaskInteractor(get()) }
-    single<LocalTaskUseCase>(named("gamesdetaillocal")) { LocalTaskInteractor(get()) }
+    single<NetworkTaskUseCase>(named(GAME_DETAIL_QUALIFIER_NETWORK)) { NetworkTaskInteractor(get()) }
+    single<LocalTaskUseCase>(named(GAME_DETAIL_QUALIFIER_LOCAL)) { LocalTaskInteractor(get()) }
     single { GameScreenshotAdapter(mutableListOf()) }
 
-    viewModel { GameDetailViewModel(get(named("gamesdetailnetwork")), get(named("gamesdetaillocal"))) }
+    viewModel { GameDetailViewModel(get(named(GAME_DETAIL_QUALIFIER_NETWORK)), get(named(GAME_DETAIL_QUALIFIER_LOCAL))) }
 }
