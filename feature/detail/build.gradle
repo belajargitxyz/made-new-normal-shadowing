@@ -26,8 +26,9 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":app")
     implementation project(":feature:base")
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    implementation androidX.legacy
+    implementation androidX.viewPager2
 
     testImplementation junit.junit4
 }
