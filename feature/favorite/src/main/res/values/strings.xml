@@ -1,4 +1,6 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="text_favorite_game" translatable="false">Favorite Game</string>
+    <string name="text_image_empty_favorite">image empty favorite</string>
+    <string name="text_favorite_empty">There is you don\'t any favorite game</string>
 </resources>

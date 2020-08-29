@@ -19,7 +19,11 @@ class GameFavoritesFragment : GameBaseFragment(R.layout.fragment_favorites) {
 
     override fun modules() = listOf(gameFavoritesModule)
     override fun views(): Map<String, List<View>> {
-        return mapOf()
+        return mapOf(
+            KEY_FAVORITE to listOf(
+                ivFavorite, tvFavorite
+            )
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,7 +44,17 @@ class GameFavoritesFragment : GameBaseFragment(R.layout.fragment_favorites) {
         rvFavoriteGames.adapter = gameAdapter
 
         observe(gameFavoritesViewModel.loadAllFavoriteGame()) {
-            gameAdapter.submitList(it)
+            if (it.isNotEmpty()) {
+                gameAdapter.submitList(it)
+                updateViewsVisibility(View.INVISIBLE, KEY_FAVORITE)
+            } else {
+                rvFavoriteGames.visibility = View.INVISIBLE
+                updateViewsVisibility(View.VISIBLE, KEY_FAVORITE)
+            }
         }
+    }
+
+    companion object {
+        private const val KEY_FAVORITE = "info"
     }
 }
