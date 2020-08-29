@@ -15,7 +15,7 @@ import alfianyabdullah.submission.made.R as mainR
 class GameFavoritesFragment : GameBaseFragment(R.layout.fragment_favorites) {
 
     private val gameFavoritesViewModel: GameFavoritesViewModel by inject()
-    private val gameAdapter: GamesAdapter by inject(named(GAME_FAVORITE_QUALIFIER_LOCAL))
+    private val gameAdapter: GamesAdapter by inject(named(GAME_FAVORITE_QUALIFIER))
 
     override fun modules() = listOf(gameFavoritesModule)
 

@@ -4,7 +4,6 @@ import alfianyabdullah.submission.base.*
 import alfianyabdullah.submission.core.data.Resource
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_games.*
@@ -18,7 +17,7 @@ import alfianyabdullah.submission.made.R as mainR
 class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
 
     private val gamesViewModel: GamesViewModel by viewModel()
-    private val gamesAdapter: GamesAdapter by inject(named(GAME_QUALIFIER_NETWORK))
+    private val gamesAdapter: GamesAdapter by inject(named(GAME_QUALIFIER))
 
     override fun modules() = listOf(gamesModule)
 
