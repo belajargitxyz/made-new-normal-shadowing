@@ -1,4 +1,10 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_small_title">Icon in small text</string>
+    <string name="text_small">Main kok sendiri, sama istri lah</string>
+    <string name="text_title">Gallery Game</string>
+    <string name="fab_text">My Favorite Games</string>
+    <string name="text_page_info">page info</string>
+    <string name="text_reload">reload</string>
+    <string name="text_oops">Oops!</string>
 </resources>

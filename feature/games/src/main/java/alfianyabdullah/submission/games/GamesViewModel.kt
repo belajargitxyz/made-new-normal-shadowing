@@ -24,7 +24,7 @@ class GamesViewModel(private val useCase: NetworkTaskUseCase) : ViewModel() {
         findAllGames()
     }
 
-    private fun findAllGames() {
+    fun findAllGames() {
         viewModelScope.launch {
             useCase.getAllGame()
                 .onStart { _isLoading.postValue(true) }

@@ -4,8 +4,10 @@ import alfianyabdullah.submission.base.*
 import alfianyabdullah.submission.core.data.Resource
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.content_games.*
 import kotlinx.android.synthetic.main.fragment_games.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
@@ -20,9 +22,16 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
     private val gamesAdapter: GamesAdapter by inject(named(GAME_QUALIFIER))
 
     override fun modules() = listOf(gamesModule)
+    override fun views() = mapOf(
+        "INFO" to listOf(
+            tvInfo, ivInfo, tvOtherInfo, btnReloadGames
+        )
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        updateViewsVisibility(View.INVISIBLE, "INFO")
 
         gamesAdapter.setOnGameItemClickListener {
             val data = Bundle().apply {
@@ -43,18 +52,26 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
                 .navigate(mainR.id.action_games_fragment_to_favorite_fragment)
         }
 
+        btnReloadGames.setOnClickListener {
+            gamesViewModel.findAllGames()
+        }
+
         observe(gamesViewModel.isLoading) {
             loading.visibility = if (it) View.VISIBLE else View.INVISIBLE
+            if (it) updateViewsVisibility(View.GONE, "INFO")
         }
 
         observe(gamesViewModel.games) {
             when (it) {
                 is Resource.Success -> {
+                    updateViewsVisibility(View.INVISIBLE, "INFO")
                     it.data?.let { data ->
                         gamesAdapter.submitList(data.shuffled())
                     }
                 }
                 is Resource.Error -> {
+                    updateViewsVisibility(View.VISIBLE, "INFO")
+                    tvInfo.text = it.message
                 }
             }
         }
