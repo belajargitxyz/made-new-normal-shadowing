@@ -1,15 +1,10 @@
 package alfianyabdullah.submission.base
 
 import alfianyabdullah.submission.core.domain.model.Game
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.google.android.material.chip.Chip
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.item_game.view.*
 import java.text.DecimalFormat
@@ -54,6 +49,11 @@ class GamesAdapter(
             val genres = game.genres
             val genresSize = genres.size
 
+            fun mainChip(text: String){
+                itemView.mainChip.text = text
+                itemView.otherChip.visibility = View.INVISIBLE
+            }
+
             if (genres.isEmpty()) {
                 itemView.mainChip.text = "-"
                 itemView.otherChip.visibility = View.INVISIBLE
@@ -61,11 +61,9 @@ class GamesAdapter(
                 if (genresSize > 1) {
                     val other = "+${genresSize - 1}"
                     itemView.otherChip.text = other
-                    itemView.mainChip.text = genres[0].name
-                    itemView.otherChip.visibility = View.VISIBLE
+                    mainChip(genres[0].name)
                 } else {
-                    itemView.mainChip.text = genres[0].name
-                    itemView.otherChip.visibility = View.INVISIBLE
+                    mainChip(genres[0].name)
                 }
             }
 

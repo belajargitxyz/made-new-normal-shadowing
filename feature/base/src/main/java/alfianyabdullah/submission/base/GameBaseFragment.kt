@@ -2,6 +2,7 @@ package alfianyabdullah.submission.base
 
 import alfianyabdullah.submission.core.domain.model.Game
 import android.os.Bundle
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import org.koin.core.module.Module
 abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
 
     abstract fun modules(): List<Module>
+    abstract fun views(): Map<String, List<View>>
     lateinit var gameBundle: Game
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,5 +31,12 @@ abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(resLayout, container, false)
+    }
+
+    fun updateViewsVisibility(visibility: Int, keyView: String) {
+        views()[keyView]?.forEach {
+            TransitionManager.beginDelayedTransition(it.parent as ViewGroup)
+            it.visibility = visibility
+        }
     }
 }
