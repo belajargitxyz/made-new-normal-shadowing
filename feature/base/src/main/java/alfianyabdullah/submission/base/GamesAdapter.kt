@@ -49,11 +49,6 @@ class GamesAdapter(
             val genres = game.genres
             val genresSize = genres.size
 
-            fun mainChip(text: String){
-                itemView.mainChip.text = text
-                itemView.otherChip.visibility = View.INVISIBLE
-            }
-
             if (genres.isEmpty()) {
                 itemView.mainChip.text = "-"
                 itemView.otherChip.visibility = View.INVISIBLE
@@ -61,9 +56,11 @@ class GamesAdapter(
                 if (genresSize > 1) {
                     val other = "+${genresSize - 1}"
                     itemView.otherChip.text = other
-                    mainChip(genres[0].name)
+                    itemView.otherChip.visibility = View.VISIBLE
+                    itemView.mainChip.text = genres[0].name
                 } else {
-                    mainChip(genres[0].name)
+                    itemView.mainChip.text = genres[0].name
+                    itemView.otherChip.visibility = View.INVISIBLE
                 }
             }
 

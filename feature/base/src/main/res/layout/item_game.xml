@@ -80,9 +80,8 @@
             android:paddingTop="5dp"
             android:paddingEnd="10dp"
             android:paddingBottom="5dp"
-            android:textColor="#FF9900"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:textColor="#2D2D2D"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/itemName"
             app:layout_constraintTop_toBottomOf="@id/itemName"
             tools:text="Action" />
@@ -99,11 +98,11 @@
             android:paddingTop="5dp"
             android:paddingEnd="10dp"
             android:paddingBottom="5dp"
-            android:textColor="#FF9900"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:textColor="#2D2D2D"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/mainChip"
             app:layout_constraintTop_toTopOf="@id/mainChip"
+            android:visibility="gone"
             tools:text="+2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

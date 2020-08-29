@@ -65,7 +65,7 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
                 is Resource.Success -> {
                     updateViewsVisibility(View.INVISIBLE, KEY_INFO)
                     it.data?.let { data ->
-                        gamesAdapter.submitList(data.shuffled())
+                        gamesAdapter.submitList(data)
                     }
                 }
                 is Resource.Error -> {
