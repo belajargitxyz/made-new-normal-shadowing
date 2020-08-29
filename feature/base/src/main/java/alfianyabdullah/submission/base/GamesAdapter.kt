@@ -69,12 +69,9 @@ class GamesAdapter(
                 }
             }
 
-            Glide.with(itemView)
-                .load(R.drawable.bg_blur)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .transform(BlurTransformation(50, 3))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(itemView.itemPosterPreview)
+            itemView.itemBackground.loadImageFromNetwork(game.poster) {
+                transform(BlurTransformation(6, 1))
+            }
 
             itemView.setOnClickListener {
                 actionCLick?.invoke(game)

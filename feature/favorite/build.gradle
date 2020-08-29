@@ -27,6 +27,7 @@ dependencies {
     implementation project(":app")
     implementation project(":feature:base")
     implementation project(":feature:detail")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     testImplementation junit.junit4
 }

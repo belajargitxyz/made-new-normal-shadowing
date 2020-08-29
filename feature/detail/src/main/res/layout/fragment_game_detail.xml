@@ -72,7 +72,7 @@
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
                 android:textColor="#1E1E1E"
-                android:textSize="26sp"
+                android:textSize="32sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -103,9 +103,9 @@
                 android:id="@+id/tvTextPublisher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:text="Publishers"
                 android:textStyle="bold"
-                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="@id/icRating"
                 app:layout_constraintTop_toBottomOf="@id/icRating" />
 
@@ -114,15 +114,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/tvTextPublisher"
-                app:layout_constraintTop_toBottomOf="@id/tvTextPublisher"/>
+                app:layout_constraintTop_toBottomOf="@id/tvTextPublisher" />
 
             <TextView
                 android:id="@+id/tvTextGenres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:text="Genres"
                 android:textStyle="bold"
-                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="@id/chipPublisher"
                 app:layout_constraintTop_toBottomOf="@id/chipPublisher" />
 
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/tvTextGenres"
-                app:layout_constraintTop_toBottomOf="@id/tvTextGenres"/>
+                app:layout_constraintTop_toBottomOf="@id/tvTextGenres" />
 
             <TextView
                 android:id="@+id/tvTextDescription"
@@ -141,7 +141,7 @@
                 android:text="Description"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/chipGenres"
-                app:layout_constraintTop_toBottomOf="@id/chipGenres"/>
+                app:layout_constraintTop_toBottomOf="@id/chipGenres" />
 
             <TextView
                 android:id="@+id/itemDetailDescription"
@@ -149,10 +149,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="@id/tvTextDescription"
-                app:layout_constraintTop_toBottomOf="@id/tvTextDescription"/>
+                app:layout_constraintTop_toBottomOf="@id/tvTextDescription" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:tint="#fff"
+        app:backgroundTint="@color/colorAccent"
+        app:layout_anchor="@id/gamesAppBar"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_unfavorite" />
 
     <ProgressBar
         android:id="@+id/loading"

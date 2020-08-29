@@ -21,7 +21,7 @@ class GamesAdapterDecoration(private val size: Int) : RecyclerView.ItemDecoratio
             bottom = if ((parent.adapter as GamesAdapter).data().lastIndex ==
                 parent.getChildAdapterPosition(view)
             ) {
-                size * 10
+                size * 15
             } else {
 
                 size

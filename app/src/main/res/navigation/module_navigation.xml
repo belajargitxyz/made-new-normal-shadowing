@@ -7,10 +7,15 @@
     <fragment
         android:id="@+id/games_fragment"
         android:name="alfianyabdullah.submission.games.GamesFragment"
-        app:moduleName=":feature:games" >
+        app:moduleName=":feature:games">
         <action
             android:id="@+id/action_games_fragment_to_detail_fragment"
             app:destination="@id/detail_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_games_fragment_to_favorite_fragment"
+            app:destination="@id/favorite_fragment"
             app:enterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
     </fragment>
@@ -20,6 +25,15 @@
         android:name="alfianyabdullah.submission.detail.GameDetailFragment"
         app:moduleName=":feature:detail" />
 
-
+    <fragment
+        android:id="@+id/favorite_fragment"
+        android:name="alfianyabdullah.submission.favorite.GameFavoritesFragment"
+        app:moduleName=":feature:favorite">
+        <action
+            android:id="@+id/action_favorite_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 
 </navigation>

@@ -11,7 +11,7 @@ import org.koin.dsl.module
 @ExperimentalCoroutinesApi
 val gamesModule = module {
     single<NetworkTaskUseCase>(named("games")) { NetworkTaskInteractor(get()) }
-    single { GamesAdapter(mutableListOf()) }
+    single(named("games")) { GamesAdapter(mutableListOf()) }
 
     viewModel { GamesViewModel(get(named("games"))) }
 }

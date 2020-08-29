@@ -8,6 +8,8 @@ import alfianyabdullah.submission.core.domain.model.Game
 import alfianyabdullah.submission.core.domain.model.GameDetail
 import alfianyabdullah.submission.core.domain.repository.IGamesRepository
 import alfianyabdullah.submission.core.utils.Mapper
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -53,17 +55,16 @@ class GamesRepository(
         }
     }
 
-    override fun getAllGameInDatabase(): Flow<List<Game>> {
-        return flow {
-            val data = localDataSource.getAllGameInDatabase().first()
-            emit(mapper.mappingListEntityToDomain(data))
-        }
-    }
-
     override fun findGameInDatabaseById(id: Int): Flow<List<Game>> {
         return flow {
             val data = localDataSource.findGameInDatabaseById(id).first()
             emit(mapper.mappingListEntityToDomain(data))
+        }
+    }
+
+    override fun getAllGameInDatabase(): LiveData<List<Game>> {
+        return localDataSource.getAllGameInDatabase().map {
+            mapper.mappingListEntityToDomain(it)
         }
     }
 
@@ -74,3 +75,4 @@ class GamesRepository(
         localDataSource.removeGameFromDatabase(mapper.mappingDomainToEntity(game))
 
 }
+

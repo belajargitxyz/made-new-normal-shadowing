@@ -3,6 +3,7 @@ package alfianyabdullah.submission.games
 import alfianyabdullah.submission.base.GameBaseFragment
 import alfianyabdullah.submission.base.GamesAdapter
 import alfianyabdullah.submission.base.GamesAdapterDecoration
+import alfianyabdullah.submission.base.observe
 import alfianyabdullah.submission.core.data.Resource
 import android.os.Bundle
 import android.view.View
@@ -13,17 +14,14 @@ import kotlinx.android.synthetic.main.fragment_games.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import org.koin.core.context.loadKoinModules
-import org.koin.core.module.Module
 import org.koin.core.qualifier.named
-
 import alfianyabdullah.submission.made.R as mainR
 
 @ExperimentalCoroutinesApi
 class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
 
     private val gamesViewModel: GamesViewModel by viewModel()
-    private val gamesAdapter: GamesAdapter by inject()
+    private val gamesAdapter: GamesAdapter by inject(named("games"))
 
     override fun modules() = listOf(gamesModule)
 
@@ -44,18 +42,25 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
         rvGames.addItemDecoration(GamesAdapterDecoration(20))
         rvGames.adapter = gamesAdapter
 
-        gamesViewModel.isLoading.observe(viewLifecycleOwner, Observer {
-            loading.visibility = if (it) View.VISIBLE else View.INVISIBLE
-        })
+        fabFavoritePage.setOnClickListener {
+            view.findNavController()
+                .navigate(mainR.id.action_games_fragment_to_favorite_fragment)
+        }
 
-        gamesViewModel.games.observe(viewLifecycleOwner, Observer {
+        observe(gamesViewModel.isLoading){
+            loading.visibility = if (it) View.VISIBLE else View.INVISIBLE
+        }
+
+        observe(gamesViewModel.games){
             when (it) {
                 is Resource.Success -> {
-                    it.data?.let { data -> gamesAdapter.submitList(data) }
+                    it.data?.let { data ->
+                        gamesAdapter.submitList(data.shuffled())
+                    }
                 }
                 is Resource.Error -> {
                 }
             }
-        })
+        }
     }
 }

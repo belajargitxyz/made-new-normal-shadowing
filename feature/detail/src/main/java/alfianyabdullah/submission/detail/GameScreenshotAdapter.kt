@@ -1,5 +1,6 @@
 package alfianyabdullah.submission.detail
 
+import alfianyabdullah.submission.base.loadImageFromNetwork
 import alfianyabdullah.submission.core.domain.model.GameScreenshot
 import android.view.LayoutInflater
 import android.view.View
@@ -32,9 +33,7 @@ class GameScreenshotAdapter(private val screenshots: MutableList<GameScreenshot>
 
     class GameScreenshotHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(image: String) {
-            Glide.with(itemView)
-                .load(image)
-                .into(itemView.itemScreenshot)
+            itemView.itemScreenshot.loadImageFromNetwork(image)
         }
     }
 }
