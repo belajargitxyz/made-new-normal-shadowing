@@ -23,7 +23,7 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
 
     override fun modules() = listOf(gamesModule)
     override fun views() = mapOf(
-        "INFO" to listOf(
+        KEY_INFO to listOf(
             tvInfo, ivInfo, tvOtherInfo, btnReloadGames
         )
     )
@@ -58,22 +58,26 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
 
         observe(gamesViewModel.isLoading) {
             loading.visibility = if (it) View.VISIBLE else View.INVISIBLE
-            if (it) updateViewsVisibility(View.GONE, "INFO")
+            if (it) updateViewsVisibility(View.GONE, KEY_INFO)
         }
 
         observe(gamesViewModel.games) {
             when (it) {
                 is Resource.Success -> {
-                    updateViewsVisibility(View.INVISIBLE, "INFO")
+                    updateViewsVisibility(View.INVISIBLE, KEY_INFO)
                     it.data?.let { data ->
                         gamesAdapter.submitList(data.shuffled())
                     }
                 }
                 is Resource.Error -> {
-                    updateViewsVisibility(View.VISIBLE, "INFO")
+                    updateViewsVisibility(View.VISIBLE, KEY_INFO)
                     tvInfo.text = it.message
                 }
             }
         }
+    }
+
+    companion object {
+        private const val KEY_INFO = "info"
     }
 }
