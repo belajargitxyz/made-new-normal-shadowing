@@ -36,7 +36,7 @@ ext {
     glide = [
             glide         : "com.github.bumptech.glide:glide:" + version.glide,
             glideCompiler : "com.github.bumptech.glide:compiler:" + version.glide,
-            transformation: "com.github.bumptech.glide:compiler:" + version.glideTransformation
+            transformation: "jp.wasabeef:glide-transformations:" + version.glideTransformation
     ]
 
     koin = [
