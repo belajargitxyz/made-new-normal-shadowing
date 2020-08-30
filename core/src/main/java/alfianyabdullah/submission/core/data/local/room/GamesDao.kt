@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface GamesDao {
     @Query("SELECT * FROM tb_games")
-    fun getAllGameInDatabase(): LiveData<List<GamesEntity>>
+    fun getAllGameInDatabase(): Flow<List<GamesEntity>>
 
     @Query("SELECT * FROM tb_games WHERE game_id LIKE :id")
     fun findGameInDatabaseById(id: Int): Flow<List<GamesEntity>>

@@ -10,7 +10,7 @@ interface IGamesRepository {
     suspend fun getAllGame(): Flow<Resource<List<Game>>>
     suspend fun findGameById(id: Int): Flow<Resource<GameDetail>>
 
-    fun getAllGameInDatabase(): LiveData<List<Game>>
+    fun getAllGameInDatabase(): Flow<List<Game>>
     fun findGameInDatabaseById(id: Int): Flow<List<Game>>
     suspend fun insertGameToDatabase(game: Game)
     suspend fun removeGameFromDatabase(game: Game)

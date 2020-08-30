@@ -8,11 +8,10 @@ import alfianyabdullah.submission.core.domain.model.Game
 import alfianyabdullah.submission.core.domain.model.GameDetail
 import alfianyabdullah.submission.core.domain.repository.IGamesRepository
 import alfianyabdullah.submission.core.utils.Mapper
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.map
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class GamesRepository(
     private val localDataSource: GamesLocalDataSource,
@@ -62,11 +61,10 @@ class GamesRepository(
         }
     }
 
-    override fun getAllGameInDatabase(): LiveData<List<Game>> {
-        return localDataSource.getAllGameInDatabase().map {
+    override fun getAllGameInDatabase(): Flow<List<Game>> =
+        localDataSource.getAllGameInDatabase().map {
             mapper.mappingListEntityToDomain(it)
         }
-    }
 
     override suspend fun insertGameToDatabase(game: Game) =
         localDataSource.insertGameToDatabase(mapper.mappingDomainToEntity(game))
