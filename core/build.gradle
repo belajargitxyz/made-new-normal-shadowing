@@ -45,6 +45,9 @@ dependencies {
     implementation room.runtime
     implementation room.ktx
 
+    implementation "net.zetetic:android-database-sqlcipher:4.4.0"
+    implementation "androidx.sqlite:sqlite:2.1.0"
+
     implementation kotlin.stdLib
 
     api koin.core
