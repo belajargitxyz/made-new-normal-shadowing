@@ -24,9 +24,11 @@ class GamesNetworkDataSource(private val gamesDataService: GamesDataService) {
                 }
 
             } else {
+                println(response.message())
                 emit(GamesDataResponse.Error("Something happen with data!"))
             }
         } catch (e: Exception) {
+            println(e.message)
             emit(GamesDataResponse.Error("Something happen with network!"))
         }
 
