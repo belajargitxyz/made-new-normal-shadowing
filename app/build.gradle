@@ -43,7 +43,7 @@ dependencies {
     implementation androidX.material
 
     api navigation.dynamicFeaturesFragment
-    api 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    api navigation.navigationUI
 
     testImplementation junit.junit4
 

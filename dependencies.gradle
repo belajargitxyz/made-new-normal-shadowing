@@ -41,6 +41,7 @@ ext {
             material        : "com.google.android.material:material:" + version.material,
             legacy          : "androidx.legacy:legacy-support-v4:" + version.legacy,
             viewPager2      : "androidx.viewpager2:viewpager2:" + version.viewPager2
+
     ]
 
     lifecycle = [
@@ -49,7 +50,8 @@ ext {
     ]
 
     navigation = [
-            dynamicFeaturesFragment: "androidx.navigation:navigation-dynamic-features-fragment:" + version.navigation
+            dynamicFeaturesFragment: "androidx.navigation:navigation-dynamic-features-fragment:" + version.navigation,
+            navigationUI           : "androidx.navigation:navigation-ui-ktx:" + version.navigation
     ]
 
     retrofit = [
