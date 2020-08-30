@@ -2,10 +2,12 @@ package alfianyabdullah.submission.games
 
 import alfianyabdullah.submission.base.*
 import alfianyabdullah.submission.core.data.Resource
+import alfianyabdullah.submission.made.AppAnalytics
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.content_games.*
 import kotlinx.android.synthetic.main.fragment_games.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -33,8 +35,14 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
         updateViewsVisibility(View.INVISIBLE, KEY_INFO)
 
         gamesAdapter.setOnGameItemClickListener {
+
             val data = Bundle().apply {
                 putParcelable(GAME_BUNDLE_KEY, it)
+            }
+
+            AppAnalytics.pushEvent("GAME_CLICK") {
+                param(FirebaseAnalytics.Param.ITEM_NAME, "Interested game")
+                param(FirebaseAnalytics.Param.ITEMS, data)
             }
 
             view.findNavController()
@@ -69,7 +77,7 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
                     }
                 }
                 is Resource.Error -> {
-                    if (gamesAdapter.data().isEmpty()){
+                    if (gamesAdapter.data().isEmpty()) {
                         updateViewsVisibility(View.VISIBLE, KEY_INFO)
                         tvInfo.text = it.message
                     }

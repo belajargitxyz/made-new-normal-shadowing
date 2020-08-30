@@ -4,11 +4,13 @@ import alfianyabdullah.submission.base.GameBaseFragment
 import alfianyabdullah.submission.base.attachToViewPager
 import alfianyabdullah.submission.base.observe
 import alfianyabdullah.submission.core.data.Resource
+import alfianyabdullah.submission.made.AppAnalytics
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.content_game_detail.*
 import kotlinx.android.synthetic.main.fragment_game_detail.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -116,6 +118,10 @@ class GameDetailFragment : GameBaseFragment(R.layout.fragment_game_detail) {
         observe(gameDetailViewModel.favorite) {
             isFavorite = it
             if (it) {
+                AppAnalytics.pushEvent("GAME_FAVORITE") {
+                    param(FirebaseAnalytics.Param.ITEM_NAME, "Favorite game")
+                    param(FirebaseAnalytics.Param.ITEMS, gameBundle.name)
+                }
                 fabFavorite.setImageResource(R.drawable.ic_favorite)
             } else {
                 fabFavorite.setImageResource(R.drawable.ic_unfavorite)

@@ -1,10 +1,12 @@
 package alfianyabdullah.submission.favorite
 
 import alfianyabdullah.submission.base.*
+import alfianyabdullah.submission.made.AppAnalytics
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.fragment_favorites.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
@@ -32,6 +34,11 @@ class GameFavoritesFragment : GameBaseFragment(R.layout.fragment_favorites) {
         gameAdapter.setOnGameItemClickListener {
             val data = Bundle().apply {
                 putParcelable(GAME_BUNDLE_KEY, it)
+            }
+
+            AppAnalytics.pushEvent("GAME_FAVORITE_CLICK") {
+                param(FirebaseAnalytics.Param.ITEM_NAME, "Interested favorite game")
+                param(FirebaseAnalytics.Param.ITEMS, data)
             }
 
             view.findNavController()
