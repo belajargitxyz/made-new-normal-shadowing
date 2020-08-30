@@ -69,8 +69,10 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
                     }
                 }
                 is Resource.Error -> {
-                    updateViewsVisibility(View.VISIBLE, KEY_INFO)
-                    tvInfo.text = it.message
+                    if (gamesAdapter.data().isEmpty()){
+                        updateViewsVisibility(View.VISIBLE, KEY_INFO)
+                        tvInfo.text = it.message
+                    }
                 }
             }
         }
