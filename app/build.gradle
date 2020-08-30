@@ -46,8 +46,8 @@ dependencies {
     api androidX.appCompat
     api androidX.constraintLayout
 
-    api 'com.google.firebase:firebase-analytics-ktx:17.5.0'
-    api 'com.google.firebase:firebase-crashlytics:17.2.1'
+    api firebase.analytics
+    api firebase.crashlytics
 
     implementation androidX.coordinator
     implementation androidX.material

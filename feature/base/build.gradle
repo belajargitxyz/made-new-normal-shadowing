@@ -41,20 +41,20 @@ dependencies {
 
     api kotlin.stdLib
 
-    api 'androidx.recyclerview:recyclerview:1.1.0'
-    api 'androidx.cardview:cardview:1.0.0'
+    api androidX.recyclerView
+    api androidX.cardView
     api androidX.constraintLayout
 
-    api 'com.github.bumptech.glide:glide:4.11.0'
-    api 'jp.wasabeef:glide-transformations:4.1.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    api glide.glide
+    api glide.transformation
+    annotationProcessor glide.glideCompiler
 
     api koin.core
     api koin.android
     api koin.viewModel
 
-    api 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
-    api 'com.google.android.material:material:1.2.0'
+    api androidX.coordinator
+    api androidX.material
 
     api lifecycle.liveDataKtx
     api lifecycle.viewModelKtx

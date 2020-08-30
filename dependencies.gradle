@@ -19,12 +19,24 @@ ext {
             coreKtx              : "1.3.1",
             constraintLayout     : "2.0.2",
             appCompat            : "1.2.0",
+            recyclerView         : "1.1.0",
+            cardView             : "1.0.0",
             koin                 : "2.1.5",
             navigation           : "2.3.0",
             coordinator          : "1.1.0",
             material             : "1.2.0",
             legacy               : "1.0.0",
-            viewPager2           : "1.0.0"
+            viewPager2           : "1.0.0",
+            analytics            : "17.4.3",
+            crashlytics          : "17.1.0",
+            glide                : "4.11.0",
+            glideTransformation  : "4.1.0"
+    ]
+
+    glide = [
+            glide         : "com.github.bumptech.glide:glide:" + version.glide,
+            glideCompiler : "com.github.bumptech.glide:compiler:" + version.glide,
+            transformation: "com.github.bumptech.glide:compiler:" + version.glideTransformation
     ]
 
     koin = [
@@ -40,8 +52,14 @@ ext {
             coordinator     : "androidx.coordinatorlayout:coordinatorlayout:" + version.coordinator,
             material        : "com.google.android.material:material:" + version.material,
             legacy          : "androidx.legacy:legacy-support-v4:" + version.legacy,
-            viewPager2      : "androidx.viewpager2:viewpager2:" + version.viewPager2
+            viewPager2      : "androidx.viewpager2:viewpager2:" + version.viewPager2,
+            recyclerView    : "androidx.recyclerview:recyclerview:" + version.recyclerView,
+            cardView        : "androidx.cardview:cardview:" + version.cardView
+    ]
 
+    firebase = [
+            analytics  : "com.google.firebase:firebase-analytics-ktx:" + version.analytics,
+            crashlytics: "com.google.firebase:firebase-crashlytics:" + version.crashlytics
     ]
 
     lifecycle = [
