@@ -8,16 +8,22 @@ import alfianyabdullah.submission.core.data.repository.GamesRepository
 import alfianyabdullah.submission.core.domain.repository.IGamesRepository
 import alfianyabdullah.submission.core.utils.Mapper
 import androidx.room.Room
+import net.sqlcipher.database.SupportFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
+import net.sqlcipher.database.SQLiteDatabase as SQLiteChipDatabase
 
 val databaseModule = module {
     single {
+        val passphrase: ByteArray = SQLiteChipDatabase.getBytes("mantan_setan".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             GamesDatabase::class.java,
             "db_games"
-        ).build()
+        )
+            .openHelperFactory(factory)
+            .build()
     }
 
     factory { get<GamesDatabase>().gamesDao() }
