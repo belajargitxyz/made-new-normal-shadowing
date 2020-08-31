@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import jp.wasabeef.glide.transformations.BlurTransformation
+import com.bumptech.glide.load.DecodeFormat
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_game.view.*
 import java.text.DecimalFormat
 
@@ -33,7 +34,7 @@ class GamesAdapter(
     override fun onViewRecycled(holder: GameHolder) {
         super.onViewRecycled(holder)
 
-        Glide.with(holder.itemView.context.applicationContext).clear(holder.itemView.itemBackground)
+        Glide.with(holder.itemView).clear(holder.itemView.itemBackground)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameHolder {
@@ -71,8 +72,10 @@ class GamesAdapter(
                 }
             }
 
-            itemView.itemBackground.loadImageFromNetwork(game.poster) {
-                transform(BlurTransformation(6, 1))
+            Glide.with(itemView).load(game.poster).apply {
+                apply(RequestOptions().format(DecodeFormat.PREFER_RGB_565))
+                skipMemoryCache(true)
+                into(itemView.itemBackground)
             }
 
             itemView.setOnClickListener {

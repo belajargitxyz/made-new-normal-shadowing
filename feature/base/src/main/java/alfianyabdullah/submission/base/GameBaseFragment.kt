@@ -16,8 +16,6 @@ abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
     abstract fun views(): Map<String, List<View>>
     lateinit var gameBundle: Game
 
-    private var gameView: View? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,8 +30,7 @@ abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        gameView = inflater.inflate(resLayout, container, false)
-        return gameView
+        return inflater.inflate(resLayout, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,10 +43,5 @@ abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
         views()[keyView]?.forEach {
             it.visibility = visibility
         }
-    }
-
-    override fun onDestroy() {
-        gameView = null
-        super.onDestroy()
     }
 }
