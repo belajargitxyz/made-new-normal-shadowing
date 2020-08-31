@@ -6,7 +6,6 @@ import alfianyabdullah.submission.core.data.local.entity.ScreenshotEntity
 import alfianyabdullah.submission.core.data.network.response.GameDetailResponse
 import alfianyabdullah.submission.core.data.network.response.GameItem
 import alfianyabdullah.submission.core.domain.model.*
-import java.lang.IllegalArgumentException
 
 class Mapper {
 
