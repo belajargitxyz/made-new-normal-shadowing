@@ -75,6 +75,7 @@ class GamesAdapter(
             Glide.with(itemView).load(game.poster).apply {
                 apply(RequestOptions().format(DecodeFormat.PREFER_RGB_565))
                 skipMemoryCache(true)
+                override(100)
                 into(itemView.itemBackground)
             }
 

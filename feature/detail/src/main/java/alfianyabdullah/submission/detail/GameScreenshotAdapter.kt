@@ -1,11 +1,13 @@
 package alfianyabdullah.submission.detail
 
-import alfianyabdullah.submission.base.loadImageFromNetwork
 import alfianyabdullah.submission.core.domain.model.GameScreenshot
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_game_screenshot.view.*
 
 class GameScreenshotAdapter(private val screenshots: MutableList<GameScreenshot>) :
@@ -23,16 +25,14 @@ class GameScreenshotAdapter(private val screenshots: MutableList<GameScreenshot>
         holder.bind(screenshots[position].image)
     }
 
-    fun submit(screenshots: List<GameScreenshot>) {
-        this.screenshots.clear()
-        this.screenshots.addAll(screenshots)
-
-        notifyDataSetChanged()
-    }
-
     class GameScreenshotHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(image: String) {
-            itemView.itemScreenshot.loadImageFromNetwork(image)
+            Glide.with(itemView).load(image).apply {
+                apply(RequestOptions().format(DecodeFormat.PREFER_RGB_565))
+                skipMemoryCache(true)
+                override(300)
+                into(itemView.itemScreenshot)
+            }
         }
     }
 }
