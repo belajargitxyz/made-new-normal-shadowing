@@ -12,8 +12,11 @@ import org.koin.core.module.Module
 abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
 
     abstract fun modules(): List<Module>
+    abstract fun onViewReady(view: View)
     abstract fun views(): Map<String, List<View>>
     lateinit var gameBundle: Game
+
+    private var gameView: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +32,24 @@ abstract class GameBaseFragment(private val resLayout: Int) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(resLayout, container, false)
+        gameView = inflater.inflate(resLayout, container, false)
+        return gameView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (activity != null) onViewReady(view)
     }
 
     fun updateViewsVisibility(visibility: Int, keyView: String) {
         views()[keyView]?.forEach {
-            //TransitionManager.beginDelayedTransition(it.parent as ViewGroup)
             it.visibility = visibility
         }
+    }
+
+    override fun onDestroy() {
+        gameView = null
+        super.onDestroy()
     }
 }

@@ -8,8 +8,10 @@ import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -25,10 +27,11 @@ fun ImageView.loadImageFromNetwork(
     url: String,
     config: (RequestBuilder<Drawable>.() -> RequestBuilder<Drawable>)? = null
 ) {
-    Glide.with(this).load(url).apply {
+    Glide.with(this.context.applicationContext).load(url).apply {
         config?.invoke(this)
+        apply(RequestOptions().format(DecodeFormat.PREFER_RGB_565))
+        thumbnail(0.1f)
         transition(DrawableTransitionOptions.withCrossFade())
-        diskCacheStrategy(DiskCacheStrategy.ALL)
         into(this@loadImageFromNetwork)
     }
 }

@@ -13,7 +13,7 @@ const val GAME_QUALIFIER = "game"
 @ExperimentalCoroutinesApi
 val gamesModule = module {
     single<NetworkTaskUseCase>(named(GAME_QUALIFIER)) { NetworkTaskInteractor(get()) }
-    single(named(GAME_QUALIFIER)) { GamesAdapter(mutableListOf()) }
+    //factory(named(GAME_QUALIFIER)) { GamesAdapter(mutableListOf()) }
 
     viewModel { GamesViewModel(get(named(GAME_QUALIFIER))) }
 }

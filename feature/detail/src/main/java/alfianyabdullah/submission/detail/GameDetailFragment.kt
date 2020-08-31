@@ -5,7 +5,6 @@ import alfianyabdullah.submission.base.attachToViewPager
 import alfianyabdullah.submission.base.observe
 import alfianyabdullah.submission.core.data.Resource
 import alfianyabdullah.submission.made.AppAnalytics
-import android.os.Bundle
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.chip.Chip
@@ -21,7 +20,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class GameDetailFragment : GameBaseFragment(R.layout.fragment_game_detail) {
 
     private val gameDetailViewModel: GameDetailViewModel by viewModel()
-    private val gameScreenshotAdapter: GameScreenshotAdapter by inject()
+//    private val gameScreenshotAdapter: GameScreenshotAdapter by inject()
     private var isFavorite = false
 
     override fun modules() = listOf(gamesDetailModule)
@@ -42,9 +41,7 @@ class GameDetailFragment : GameBaseFragment(R.layout.fragment_game_detail) {
         )
     )
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onViewReady(view: View) {
         updateViewsVisibility(View.INVISIBLE, KEY_INFO)
 
         fabFavorite.hide()
@@ -55,10 +52,10 @@ class GameDetailFragment : GameBaseFragment(R.layout.fragment_game_detail) {
 
         itemDetailScreenshot.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         itemDetailScreenshot.offscreenPageLimit = 4
-        itemDetailScreenshot.adapter = gameScreenshotAdapter
+        itemDetailScreenshot.adapter = GameScreenshotAdapter(gameBundle.screenshots.toMutableList())
         itemDetailScreenshot.attachToViewPager(itemDetailScreenshotIndicator)
 
-        gameScreenshotAdapter.submit(gameBundle.screenshots)
+//        gameScreenshotAdapter.submit(gameBundle.screenshots)
 
         fabFavorite.setOnClickListener {
             gameDetailViewModel.updateGamesFavorite(isFavorite, gameBundle)

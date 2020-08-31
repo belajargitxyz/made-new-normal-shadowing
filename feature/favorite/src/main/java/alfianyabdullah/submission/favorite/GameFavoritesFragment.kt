@@ -17,7 +17,7 @@ import alfianyabdullah.submission.made.R as mainR
 class GameFavoritesFragment : GameBaseFragment(R.layout.fragment_favorites) {
 
     private val gameFavoritesViewModel: GameFavoritesViewModel by inject()
-    private val gameAdapter: GamesAdapter by inject(named(GAME_FAVORITE_QUALIFIER))
+//    private val gameAdapter: GamesAdapter by inject(named(GAME_FAVORITE_QUALIFIER))
 
     override fun modules() = listOf(gameFavoritesModule)
     override fun views(): Map<String, List<View>> {
@@ -28,10 +28,13 @@ class GameFavoritesFragment : GameBaseFragment(R.layout.fragment_favorites) {
         )
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onViewReady(view: View) {
+        rvFavoriteGames.hasFixedSize()
+        rvFavoriteGames.layoutManager = LinearLayoutManager(requireContext())
+        rvFavoriteGames.addItemDecoration(GamesAdapterDecoration(20))
+        rvFavoriteGames.adapter = GamesAdapter(mutableListOf())
 
-        gameAdapter.setOnGameItemClickListener {
+        (rvFavoriteGames.adapter as GamesAdapter).setOnGameItemClickListener {
             val data = Bundle().apply {
                 putParcelable(GAME_BUNDLE_KEY, it)
             }
@@ -45,14 +48,9 @@ class GameFavoritesFragment : GameBaseFragment(R.layout.fragment_favorites) {
                 .navigate(mainR.id.action_favorite_fragment_to_detail_fragment, data)
         }
 
-        rvFavoriteGames.hasFixedSize()
-        rvFavoriteGames.layoutManager = LinearLayoutManager(requireContext())
-        rvFavoriteGames.addItemDecoration(GamesAdapterDecoration(20))
-        rvFavoriteGames.adapter = gameAdapter
-
         observe(gameFavoritesViewModel.loadAllFavoriteGame()) {
             if (it.isNotEmpty()) {
-                gameAdapter.submitList(it)
+                (rvFavoriteGames.adapter as GamesAdapter).submitList(it)
                 updateViewsVisibility(View.INVISIBLE, KEY_FAVORITE)
             } else {
                 rvFavoriteGames.visibility = View.INVISIBLE

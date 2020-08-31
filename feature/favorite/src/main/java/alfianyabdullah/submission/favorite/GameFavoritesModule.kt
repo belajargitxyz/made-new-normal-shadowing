@@ -13,7 +13,7 @@ const val GAME_FAVORITE_QUALIFIER = "game_favorite"
 @ExperimentalCoroutinesApi
 val gameFavoritesModule = module {
     single<LocalTaskUseCase>(named(GAME_FAVORITE_QUALIFIER)) { LocalTaskInteractor(get()) }
-    single(named(GAME_FAVORITE_QUALIFIER)) { GamesAdapter(mutableListOf()) }
+//    single(named(GAME_FAVORITE_QUALIFIER)) { GamesAdapter(mutableListOf()) }
 
     viewModel {
         GameFavoritesViewModel(

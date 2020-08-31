@@ -16,7 +16,7 @@ const val GAME_DETAIL_QUALIFIER_NETWORK = "games_detail_network"
 val gamesDetailModule = module {
     single<NetworkTaskUseCase>(named(GAME_DETAIL_QUALIFIER_NETWORK)) { NetworkTaskInteractor(get()) }
     single<LocalTaskUseCase>(named(GAME_DETAIL_QUALIFIER_LOCAL)) { LocalTaskInteractor(get()) }
-    single { GameScreenshotAdapter(mutableListOf()) }
+   // single { GameScreenshotAdapter(mutableListOf()) }
 
     viewModel { GameDetailViewModel(get(named(GAME_DETAIL_QUALIFIER_NETWORK)), get(named(GAME_DETAIL_QUALIFIER_LOCAL))) }
 }

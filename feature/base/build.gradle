@@ -23,11 +23,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-        debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
-        }
+//        debug {
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//
+//        }
     }
 
     compileOptions {
@@ -53,7 +53,7 @@ dependencies {
     api koin.android
     api koin.viewModel
 
-    api androidX.coordinator
+    api androidX.viewPager2
     api androidX.material
 
     api lifecycle.liveDataKtx

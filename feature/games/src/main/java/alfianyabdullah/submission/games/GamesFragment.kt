@@ -20,7 +20,7 @@ import alfianyabdullah.submission.made.R as mainR
 class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
 
     private val gamesViewModel: GamesViewModel by viewModel()
-    private val gamesAdapter: GamesAdapter by inject(named(GAME_QUALIFIER))
+    //private val gamesAdapter: GamesAdapter by inject(named(GAME_QUALIFIER))
 
     override fun modules() = listOf(gamesModule)
     override fun views() = mapOf(
@@ -29,12 +29,15 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
         )
     )
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onViewReady(view: View) {
         updateViewsVisibility(View.INVISIBLE, KEY_INFO)
 
-        gamesAdapter.setOnGameItemClickListener {
+        rvGames.hasFixedSize()
+        rvGames.layoutManager = LinearLayoutManager(requireContext())
+        rvGames.addItemDecoration(GamesAdapterDecoration(20))
+        rvGames.adapter = GamesAdapter(mutableListOf())
+
+        (rvGames.adapter as GamesAdapter).setOnGameItemClickListener {
 
             val data = Bundle().apply {
                 putParcelable(GAME_BUNDLE_KEY, it)
@@ -48,11 +51,6 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
             view.findNavController()
                 .navigate(mainR.id.action_games_fragment_to_detail_fragment, data)
         }
-
-        rvGames.hasFixedSize()
-        rvGames.layoutManager = LinearLayoutManager(requireContext())
-        rvGames.addItemDecoration(GamesAdapterDecoration(20))
-        rvGames.adapter = gamesAdapter
 
         fabFavoritePage.setOnClickListener {
             view.findNavController()
@@ -73,11 +71,11 @@ class GamesFragment : GameBaseFragment(R.layout.fragment_games) {
                 is Resource.Success -> {
                     updateViewsVisibility(View.INVISIBLE, KEY_INFO)
                     it.data?.let { data ->
-                        gamesAdapter.submitList(data)
+                        (rvGames.adapter as GamesAdapter).submitList(data)
                     }
                 }
                 is Resource.Error -> {
-                    if (gamesAdapter.data().isEmpty()) {
+                    if ((rvGames.adapter as GamesAdapter).data().isEmpty()) {
                         updateViewsVisibility(View.VISIBLE, KEY_INFO)
                         tvInfo.text = it.message
                     }
