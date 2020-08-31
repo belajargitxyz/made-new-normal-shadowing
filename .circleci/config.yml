@@ -5,6 +5,7 @@ orbs:
  
 jobs:
   build:
+    resource_class: large
     executor: android/android
     steps:
       - checkout
