@@ -36,6 +36,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+
+
     dynamicFeatures = [':feature:games', ':feature:detail', ':feature:favorite']
 }
 

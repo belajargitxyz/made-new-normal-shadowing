@@ -46,7 +46,6 @@ dependencies {
     api androidX.constraintLayout
 
     api glide.glide
-    api glide.transformation
     annotationProcessor glide.glideCompiler
 
     api koin.core

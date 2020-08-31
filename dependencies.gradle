@@ -29,14 +29,12 @@ ext {
             viewPager2           : "1.0.0",
             analytics            : "17.4.3",
             crashlytics          : "17.1.0",
-            glide                : "4.11.0",
-            glideTransformation  : "4.1.0"
+            glide                : "4.11.0"
     ]
 
     glide = [
             glide         : "com.github.bumptech.glide:glide:" + version.glide,
-            glideCompiler : "com.github.bumptech.glide:compiler:" + version.glide,
-            transformation: "jp.wasabeef:glide-transformations:" + version.glideTransformation
+            glideCompiler : "com.github.bumptech.glide:compiler:" + version.glide
     ]
 
     koin = [
