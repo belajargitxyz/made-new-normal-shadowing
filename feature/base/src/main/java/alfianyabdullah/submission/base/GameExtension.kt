@@ -23,19 +23,6 @@ fun <T> Fragment.observe(data: LiveData<T>, action: (T) -> Unit) {
     })
 }
 
-fun ImageView.loadImageFromNetwork(
-    url: String,
-    config: (RequestBuilder<Drawable>.() -> RequestBuilder<Drawable>)? = null
-) {
-    Glide.with(this.context.applicationContext).load(url).apply {
-        config?.invoke(this)
-        apply(RequestOptions().format(DecodeFormat.PREFER_RGB_565))
-        thumbnail(0.1f)
-        transition(DrawableTransitionOptions.withCrossFade())
-        into(this@loadImageFromNetwork)
-    }
-}
-
 fun ViewPager2.attachToViewPager(tab: TabLayout) {
     TabLayoutMediator(tab, this) { _, _ -> }.attach()
 }
