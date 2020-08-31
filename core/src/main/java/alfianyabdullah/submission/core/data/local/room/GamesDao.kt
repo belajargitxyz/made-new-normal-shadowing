@@ -1,7 +1,6 @@
 package alfianyabdullah.submission.core.data.local.room
 
 import alfianyabdullah.submission.core.data.local.entity.GamesEntity
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 

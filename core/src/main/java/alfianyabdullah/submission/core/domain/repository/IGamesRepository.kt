@@ -3,7 +3,6 @@ package alfianyabdullah.submission.core.domain.repository
 import alfianyabdullah.submission.core.data.Resource
 import alfianyabdullah.submission.core.domain.model.Game
 import alfianyabdullah.submission.core.domain.model.GameDetail
-import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
 
 interface IGamesRepository {

@@ -1,6 +1,5 @@
 package alfianyabdullah.submission.favorite
 
-import alfianyabdullah.submission.base.GamesAdapter
 import alfianyabdullah.submission.core.domain.usecase.LocalTaskInteractor
 import alfianyabdullah.submission.core.domain.usecase.LocalTaskUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi

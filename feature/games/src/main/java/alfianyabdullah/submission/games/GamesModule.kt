@@ -1,6 +1,5 @@
 package alfianyabdullah.submission.games
 
-import alfianyabdullah.submission.base.GamesAdapter
 import alfianyabdullah.submission.core.domain.usecase.NetworkTaskInteractor
 import alfianyabdullah.submission.core.domain.usecase.NetworkTaskUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi

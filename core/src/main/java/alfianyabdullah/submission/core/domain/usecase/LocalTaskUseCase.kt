@@ -1,7 +1,6 @@
 package alfianyabdullah.submission.core.domain.usecase
 
 import alfianyabdullah.submission.core.domain.model.Game
-import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
 
 interface LocalTaskUseCase {

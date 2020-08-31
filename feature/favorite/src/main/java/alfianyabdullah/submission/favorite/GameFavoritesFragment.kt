@@ -10,7 +10,6 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.fragment_favorites.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
-import org.koin.core.qualifier.named
 import alfianyabdullah.submission.made.R as mainR
 
 @ExperimentalCoroutinesApi

@@ -11,9 +11,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.content_games.*
 import kotlinx.android.synthetic.main.fragment_games.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import org.koin.core.qualifier.named
 import alfianyabdullah.submission.made.R as mainR
 
 @ExperimentalCoroutinesApi
